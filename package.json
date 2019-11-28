@@ -1,0 +1,46 @@
+{
+  "name": "book-party-code-along",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "node scripts/init.js",
+    "test": "react-scripts test",
+    "start:server": "nodemon api/server.js --ignore client",
+    "start:client": "react-scripts start",
+    "build:client": "react-scripts build"
+  },
+  "repository": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HackerYou/con-ed-full-stack/issues"
+  },
+  "homepage": "https://github.com/HackerYou/con-ed-full-stack#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.7.0",
+    "@material-ui/icons": "^4.5.1",
+    "body-parser": "^1.18.3",
+    "eslint": "^5.12.0",
+    "express": "^4.16.4",
+    "init-package-json": "^1.10.3",
+    "mongoose": "^5.6.11",
+    "nodemon": "^1.19.1",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-router-dom": "^5.1.2"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "proxy": "http://localhost:3001",
+  "semistandard": {
+    "ignore": [
+      "build/**"
+    ]
+  }
+}
