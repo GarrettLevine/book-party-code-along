@@ -22,14 +22,15 @@
     "@material-ui/core": "^4.7.0",
     "@material-ui/icons": "^4.5.1",
     "body-parser": "^1.18.3",
-    "eslint": "^5.12.0",
+    "eslint": "^6.7.1",
     "express": "^4.16.4",
     "init-package-json": "^1.10.3",
     "mongoose": "^5.6.11",
-    "nodemon": "^1.19.1",
+    "nodemon": "^2.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.2.0"
   },
   "browserslist": [
     ">0.2%",
