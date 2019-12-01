@@ -44,7 +44,11 @@ export default function App() {
     </AppBar>
     <Router>
       <Switch>
-        <Route exact path="/create" component={Form} />
+        <Route
+          exact
+          path="/create"
+          component={Form}
+        />
         <Route
           exact
           path="/"

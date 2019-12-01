@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Form() {
+export default function Form(props) {
   const classes = useStyles();
   return (
     <Container className={classes.content} maxWidth="md">
@@ -53,6 +53,9 @@ export default function Form() {
             size="small"
             variant="outlined"
             color="primary"
+            onClick={() => {
+              props.history.push("/");
+            }}
           >
             Add Book
           </Button>
