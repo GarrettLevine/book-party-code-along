@@ -26,7 +26,10 @@ const server = http.createServer(router);
 
 // 7. Start server
 mongoose
-  .connect(URL, { useNewUrlParser: true })
+  .connect(URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(async () => {
     console.log(`Connected to database at ${URL}`);
     server.listen(PORT, () => {

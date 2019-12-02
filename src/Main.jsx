@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -25,10 +25,31 @@ const styles = makeStyles(theme => ({
   },
 }));
 
-const cards = [1, 2, 3];
-
 export default function Main(props) {
+  const [ books, updateBooks ] = useState([]);
+  const mainRef = useRef(false);
   const classes = styles();
+
+  async function getBooks() {
+    const resp = await fetch('/api/books');
+    const books = await resp.json();
+    if (!mainRef.current) {
+      updateBooks(books.data);
+      mainRef.current = true;
+    }
+  }
+
+  function pushToBook(id) {
+    props.history.push(`/book/${id}`)
+  }
+
+  useEffect(() => {
+    try {
+        getBooks();
+      } catch (ex) {
+        console.log(ex);
+      }
+  });
 
   return (
     <React.Fragment>
@@ -59,9 +80,9 @@ export default function Main(props) {
           My books
         </Typography>
         <Grid container spacing={4}>
-          {cards.map(card => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
-              <Card title={"Book Title"} subtitle={"By Author Name"} />
+          {books.map(book => (
+            <Grid key={book._id}  item  xs={12} sm={6} md={4}>
+              <Card id={book._id} title={book.title} subtitle={book.authorName} onClick={pushToBook} />
             </Grid>
           ))}
         </Grid>

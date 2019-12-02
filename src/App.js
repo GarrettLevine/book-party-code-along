@@ -10,6 +10,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+
+import Book from "./Book";
 import Main from "./Main";
 import Form from "./Form";
 
@@ -53,6 +55,11 @@ export default function App() {
           exact
           path="/"
           component={Main}
+        />
+        <Route
+          exact
+          path="/book/:id"
+          component={Book}
         />
       </Switch>
     </Router>

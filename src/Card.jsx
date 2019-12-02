@@ -41,7 +41,10 @@ export default function CardComp(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <IconButton aria-label="more info">
+        <IconButton
+          aria-label="more info"
+          onClick={() => { props.onClick(props.id)}}
+        >
           <InfoIcon />
         </IconButton>
       </CardActions>
