@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar';
 import BookIcon from '@material-ui/icons/Book';
+import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,7 +37,9 @@ export default function App() {
     <div className={classes.root}>
       <AppBar position="relative">
       <Toolbar>
-        <BookIcon className={classes.icon} />
+        <IconButton aria-label="more info">
+          <BookIcon />
+        </IconButton>
         <Typography variant="h6" color="inherit" noWrap>
           Book Party
         </Typography>
