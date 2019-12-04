@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { Schema }  = mongoose;
 
 // Map to fields in the DB
 const bookSchema = new Schema();
