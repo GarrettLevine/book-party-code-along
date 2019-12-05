@@ -46,7 +46,7 @@ export default function Book(props) {
           <Typography className={classes.textPadding} component="h2" variant="h2" align="left" color="textPrimary">
             {book.title}
           </Typography>
-          <Typography className={classes.textPadding} component="h3" variant="subtitle" align="left" color="textPrimary">
+          <Typography className={classes.textPadding} component="h3" variant="subtitle1" align="left" color="textPrimary">
             By {book.authorName}
           </Typography>
           <span>Rating: {book.rating}/5</span>

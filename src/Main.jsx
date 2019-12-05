@@ -42,12 +42,13 @@ class Main extends React.Component {
     const resp = await fetch('/api/books');
     const books = await resp.json();
     this.setState({
-      books,
+      books: books.data,
     });
   }
 
   render(){
     const { classes, history } = this.props;
+
     return (
       <React.Fragment>
         <div className={classes.heroContent}>
