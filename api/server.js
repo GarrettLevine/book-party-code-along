@@ -5,13 +5,14 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const http = require('http');
 
-// 1. Create main express intance
+// 1. Create main express instance
 const router = express();
 
 // 2. Require routes
 const { router: bookRoutes } = require('./routes/books/bookRoutes');
+const { router: userRoutes } = require('./routes/users/userRoutes');
 
-// 3. Require conatants
+// 3. Require constants
 const { URL, PORT } = require('./utils/constants');
 
 // 4. Ensure that the router is using body parser to appropriately format incoming requests
@@ -20,6 +21,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 // 5. Utilise routes
 router.use('/api/books', bookRoutes);
+router.use('/api/users', userRoutes);
 
 // 6. Create a server from express instance
 const server = http.createServer(router);
