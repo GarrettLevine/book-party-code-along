@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import InputLabel from '@material-ui/core/InputLabel';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { FormControl } from '@material-ui/core';
+import React, { useState } from 'react'
+import Button from '@material-ui/core/Button'
+import Container from '@material-ui/core/Container'
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
+import InputBase from '@material-ui/core/InputBase'
+import InputLabel from '@material-ui/core/InputLabel'
+import NativeSelect from '@material-ui/core/NativeSelect'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
+import { FormControl } from '@material-ui/core'
 
 const BootstrapInput = withStyles(theme => ({
   root: {
@@ -42,8 +42,7 @@ const BootstrapInput = withStyles(theme => ({
       boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
     },
   },
-}))(InputBase);
-
+}))(InputBase)
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -57,77 +56,78 @@ const useStyles = makeStyles(theme => ({
   buttonField: {
     marginTop: theme.spacing(1),
   },
-}));
+}))
 
-export default function Form(props) {
-  const classes = useStyles();
-  const [bookTitle, updateBookTitle] = useState('');
-  const [authorName, updateAuthorName] = useState('');
-  const [rating, updateRating] = useState(1);
-  const [comment, updateComment] = useState('');
+export default function Form (props) {
+  const classes = useStyles()
+  const [bookTitle, updateBookTitle] = useState('')
+  const [authorName, updateAuthorName] = useState('')
+  const [rating, updateRating] = useState(1)
+  const [comment, updateComment] = useState('')
 
-  async function saveBook() {
+  async function saveBook () {
     try {
       const body = JSON.stringify({
         title: bookTitle,
         authorName,
         comment,
         rating,
-      });
+        user: props.userId,
+      })
       const response = await fetch('/api/books', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: body,
-      });
+      })
       const resp = response.json()
       if (resp.status !== 200) {
-        throw new Error(resp.error);
+        throw new Error(resp.error)
       }
     } catch (ex) {
-      console.log(ex);
+      console.log(ex)
     }
   }
 
   return (
-    <Container className={classes.content} maxWidth="md">
+    <Container className={classes.content} maxWidth='md'>
       <form>
         <div>
-          <Typography component="h6" variant="h6" align="left" color="textPrimary">
+          <Typography component='h6' variant='h6' align='left' color='textPrimary'>
             Add a Book
           </Typography>
         </div>
         <div>
           <TextField
-            id="standard-multiline-flexible"
-            label="Author Name"
+            id='standard-multiline-flexible'
+            label='Author Name'
             multiline
-            rowsMax="2"
+            rowsMax='2'
             className={classes.textField}
-            margin="normal"
+            margin='normal'
             value={authorName}
-            onChange={(e) => { updateAuthorName(e.target.value); }}
+            onChange={(e) => { updateAuthorName(e.target.value) }}
           />
           <TextField
-            id="standard-multiline-flexible"
-            label="Book Title"
+            id='standard-multiline-flexible'
+            label='Book Title'
             multiline
-            rowsMax="2"
+            rowsMax='2'
             className={classes.textField}
-            margin="normal"
+            margin='normal'
             value={bookTitle}
-            onChange={(e) => { updateBookTitle(e.target.value); }}
+            onChange={(e) => { updateBookTitle(e.target.value) }}
           />
           <FormControl>
-            <InputLabel shrink htmlFor="select-multiple-native">
+            <InputLabel shrink htmlFor='select-multiple-native'>
               Rating
             </InputLabel>
             <NativeSelect
-            id="demo-customized-select-native"
-            value={rating}
-            onChange={(e) => {updateRating(e.target.value);}}
-            input={<BootstrapInput />}
+              id='demo-customized-select-native'
+              value={rating}
+              onChange={(e) => { updateRating(e.target.value) }}
+              input={<BootstrapInput />}
             >
               <option value={1}>1</option>
               <option value={2}>2</option>
@@ -139,32 +139,32 @@ export default function Form(props) {
         </div>
         <div>
           <TextField
-            id="outlined-multiline-static"
-            label="comment"
+            id='outlined-multiline-static'
+            label='comment'
             multiline
-            rowsMax="4"
+            rowsMax='4'
             className={classes.textField}
-            margin="normal"
+            margin='normal'
             value={comment}
-            variant="outlined"
-            onChange={(e) => { updateComment(e.target.value); }}
+            variant='outlined'
+            onChange={(e) => { updateComment(e.target.value) }}
           />
         </div>
         <div>
           <Button
-              className={classes.buttonField}
-              size="small"
-              variant="outlined"
-              color="primary"
-              onClick={async () => {
-                await saveBook();
-                props.history.push("/");
-              }}
-            >
+            className={classes.buttonField}
+            size='small'
+            variant='outlined'
+            color='primary'
+            onClick={async () => {
+              await saveBook()
+              props.history.push('/')
+            }}
+          >
             Add Book
           </Button>
         </div>
       </form>
     </Container>
-  );
+  )
 }

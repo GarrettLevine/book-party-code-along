@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 // Map to fields in the DB
 const bookSchema = new Schema({
@@ -16,7 +16,11 @@ const bookSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-  }
-});
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
+})
 
-module.exports = mongoose.model('Book', bookSchema);
+module.exports = mongoose.model('Book', bookSchema)
