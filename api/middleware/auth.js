@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
   const authHeader = req.get('Authorization')
 
   if (!authHeader) {
-    next(new HTTP401Error())
+    next(new Error('not authorized'))
   } else {
     try {
       /* eslint-disable-next-line */
